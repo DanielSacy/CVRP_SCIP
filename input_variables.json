@@ -1,0 +1,15 @@
+{
+    "Ctt": 16,
+    "HPstation_charge_cost": 0.57,
+    "Cf": 4,
+    "Charging_rate_kw": 225,
+    "Battery_capacity_Wh": 90000,
+    "Min_battery": 0.20,
+    "ef_truck": 0.48,
+    "ef_EV": 0.7,
+    "frontal_surface": 5,
+    "vehicle_curb_w": 3629,
+    "Qm": 9073,
+    "Avg_V": 80,
+    "ICp": 1 
+}
