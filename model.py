@@ -91,10 +91,11 @@ def sacystation(No, N, M, Arcs, demand, load_capacity, distance):
 
     '''
     Initialize Load at Departure
+    This restriction is necessary to ensure that the load at the departure of the vehicle is equal to all visiting nodes
     '''
     for m in M:
-        for j in No:
-            model.addCons(l[0, j, m] == quicksum(demand[j] * x[i, j, m] for i,j in Arcs),     name=f'init_load_departure[{0},{j},{m}]')
+        for k in No:
+            model.addCons(l[0, k, m] == quicksum(demand[j] * x[i, j, m] for i,j in Arcs),     name=f'init_load_departure[{0},{j},{m}]')
         
     '''
     Vehicle Load Capacity
