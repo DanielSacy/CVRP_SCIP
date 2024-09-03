@@ -1,6 +1,33 @@
 import json
 import csv
 
+def reconstruct_route(sol, M):
+    """
+    Reconstruction of the route from the solution.
+    """
+    routes = {m: [0] for m in M}  # Initialize routes for each vehicle starting at the depot (node 0)
+    # route = []
+
+    for m in M:
+        current_node = 0
+        while True:
+            next_node = None
+            for key, value in sol.items():
+                    print(key, value)
+                    i, j, vehicle = map(int, key[2:-1].split(", "))
+                    if vehicle == m and i == current_node and value > 0.5:  # Check the current vehicle and node
+                        next_node = j  # Set the next node
+                        routes[m].append(j)  # Append the next node to the route
+                        break  # Exit the loop once we find the next node
+            if next_node is None or next_node == 0:
+                break
+            current_node = next_node
+        print(routes)
+
+    return routes  # Start and end with depot
+    # return [0] + routes  # Start and end with depot
+
+
 def print_sol(model, demand, distance, Arcs, M, l, runtime, No, N):
     """
     Print the solution of the model
@@ -61,4 +88,32 @@ def print_sol(model, demand, distance, Arcs, M, l, runtime, No, N):
             'Runtime': f'{runtime:.3f}s'
         })
     
-    return sol, distanceij, demandi, lijm
+
+# def reconstruct_route(sol, M):
+#     """
+#     Reconstruction of the routes from the solution for each vehicle.
+#     """
+#     routes = {m: [] for m in M}  # Dictionary to store routes for each vehicle
+    
+#     for m in M:
+#         route = []
+#         current_node = 0
+
+#         while True:
+#             next_node = None
+#             for key, value in sol.items():
+#                 if value > 0.5:  # Ensure the arc is part of the solution
+#                     # Parse the string key to extract node indices
+#                     i, j, vehicle = map(int, key[2:-1].split(", "))
+#                     if vehicle == m and i == current_node:
+#                         next_node = j
+#                         route.append(j)
+#                         break
+#             if next_node is None or next_node == 0:
+#                 break
+#             current_node = next_node
+        
+#         routes[m] = [0] + route  # Start and end with depot
+
+#     return routes
+    return sol, distanceij, demandi, lijm, objective_value

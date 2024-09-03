@@ -9,10 +9,7 @@ def sacystation(No, N, M, Arcs, demand, load_capacity, distance):
         M - set of vehicles
         demand[i] - demand of customer i
         load_capacity[m] - capacity of vehicle m
-        time_cost - Travel time per arc(i,j)
-
-    ==================================
-    Problems: Sending m to a charging station
+        distance[i,j] - distance between nodes i and j
     """
     
     model = Model("sacystation")
