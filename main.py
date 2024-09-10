@@ -39,6 +39,8 @@ def run_instance(instance_params):
 
     sol, _, _, _, objective_value = print_sol(model, demand, distance, Arcs, M, l, runtime, No, N)
     
+    plot_graph(model, l, No)
+    
     model.freeProb()
 
     # Extract SCIP solution value and route
@@ -53,9 +55,10 @@ def main():
     MAIN FUNCTION
     """
     # Define paths
-    data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes3_Instances2.csv"
+    # data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes3_Instances2.csv"
     # data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\validation\Nodes10_Instances100.csv"
-    # data_path = "TSP_test_20_100.CSV"
+    '''DEBUG'''
+    data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes10_Instances1.csv"
     
     # Load CSV instances
     df = pd.read_csv(data_path)

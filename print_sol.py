@@ -89,31 +89,4 @@ def print_sol(model, demand, distance, Arcs, M, l, runtime, No, N):
         })
     
 
-# def reconstruct_route(sol, M):
-#     """
-#     Reconstruction of the routes from the solution for each vehicle.
-#     """
-#     routes = {m: [] for m in M}  # Dictionary to store routes for each vehicle
-    
-#     for m in M:
-#         route = []
-#         current_node = 0
-
-#         while True:
-#             next_node = None
-#             for key, value in sol.items():
-#                 if value > 0.5:  # Ensure the arc is part of the solution
-#                     # Parse the string key to extract node indices
-#                     i, j, vehicle = map(int, key[2:-1].split(", "))
-#                     if vehicle == m and i == current_node:
-#                         next_node = j
-#                         route.append(j)
-#                         break
-#             if next_node is None or next_node == 0:
-#                 break
-#             current_node = next_node
-        
-#         routes[m] = [0] + route  # Start and end with depot
-
-#     return routes
     return sol, distanceij, demandi, lijm, objective_value

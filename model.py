@@ -50,7 +50,8 @@ def sacystation(No, N, M, Arcs, demand, load_capacity, distance):
             model.addCons(
                 quicksum(x[i,j,m] for i in N if i!=j)
             -   quicksum(x[j,k,m] for k in N if k!=j)
-            == (1 if i == 0 else 0)
+            == 0
+            # == (1 if i == 0 else 0)
             ,name=f'tour_connectivity[{i},{j},{m}]'
             )              
     
@@ -58,12 +59,12 @@ def sacystation(No, N, M, Arcs, demand, load_capacity, distance):
     Vehicles tours
     '''
     # if (len(No) - len(M)) < 0:
-    if len(No) < len(M):
-        for j in No:
-            model.addCons(quicksum(x[0, j, m] for m in M) == 1, "num_vehicles_leaving_depot")
-    else:
-        for m in M:
-            model.addCons(quicksum(x[0, j, m] for j in No) == 1, "num_vehicles_leaving_depot")
+    # if len(No) < len(M):
+    #     for j in No:
+    #         model.addCons(quicksum(x[0, j, m] for m in M) == 1, "num_vehicles_leaving_depot")
+    # else:
+    for m in M:
+        model.addCons(quicksum(x[0, j, m] for j in No) == 1, "num_vehicles_leaving_depot")
 
     '''
     Enforces that the vehicle starts from the depot and returns
@@ -99,8 +100,8 @@ def sacystation(No, N, M, Arcs, demand, load_capacity, distance):
     ''' 
     for m in M:
         for (i,j) in Arcs:
-            model.addCons(demand[j] * x[i,j,m] <= l[i,j,m],     name=f'load_capacity[{i},{j},{m}')     
-            model.addCons(l[i,j,m] * x[i,j,m] <= (load_capacity[m] - demand[i])*x[i,j,m]  , name=f'load_capacity[{i},{j},{m}')
+            model.addCons(demand[j] * x[i,j,m] <= l[i,j,m],     name=f'load_capacity_lower[{i},{j},{m}')     
+            model.addCons(l[i,j,m] * x[i,j,m] <= (load_capacity[m] - demand[i])*x[i,j,m]  , name=f'load_capacity_upper[{i},{j},{m}')
   
     """
     Objective Function

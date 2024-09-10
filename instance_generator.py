@@ -29,7 +29,7 @@ def instanSacy(n_customers, n_vehicles, max_demand, max_distance):
         
     return No, N, M, Arcs, demand, load_capacity, distance  #,time_cost
 
-def prepare_instance_from_csv_row(df, instance_id):
+def prepare_instance_from_csv_row(df: pd.DataFrame, instance_id: str):
     '''
     Instance generator from CSV file used in GAT
     '''
@@ -44,7 +44,8 @@ def prepare_instance_from_csv_row(df, instance_id):
 
     
     # Extracting the number of vehicles
-    n_vehicles = 2  # Default, can be manually set
+    n_vehicles = 5  # Default, can be manually set
+
     
     # Extracting demands
     demand = instance_df.groupby('FromNode')['Demand'].first().to_dict()
@@ -66,6 +67,7 @@ def prepare_instance_from_csv_row(df, instance_id):
 
     # serialized_distance_matrix = first_row['DistanceMatrix']
     # distance_matrix = np.array(json.loads(serialized_distance_matrix))
+    
     
     # Extracting load capacity
     load_capacity_value = instance_df['Capacity'].iloc[0]
