@@ -55,10 +55,10 @@ def main():
     MAIN FUNCTION
     """
     # Define paths
-    # data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes3_Instances2.csv"
-    # data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\validation\Nodes10_Instances100.csv"
+    # data_path = r"GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes3_Instances2.csv"
+    # data_path = r"GNN\GAT_VRP1\gat_vrp1\src_batch\instances\validation\Nodes10_Instances100.csv"
     '''DEBUG'''
-    data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes10_Instances1.csv"
+    data_path = r"GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes10_Instances1.csv"
     
     # Load CSV instances
     df = pd.read_csv(data_path)
