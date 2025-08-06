@@ -81,8 +81,8 @@ def prepare_instance_from_csv_row(df: pd.DataFrame, instance_id: str):
     return No, N, M, Arcs, demand, load_capacity, distance
 
 if __name__ == "__main__":
-    data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes3_Instances2.csv"
-    # data_path = r"D:\DAY2DAY\MESTRADO\Codes\GNN\GAT_VRP1\gat_vrp1\src_batch\instances\validation\Nodes20_Instances100.csv"
+    data_path = r"GNN\GAT_VRP1\gat_vrp1\src_batch\instances\Nodes3_Instances2.csv"
+    # data_path = r"GNN\GAT_VRP1\gat_vrp1\src_batch\instances\validation\Nodes20_Instances100.csv"
     
     df = pd.read_csv(data_path)
     for instance_id in df['InstanceID'].unique():
